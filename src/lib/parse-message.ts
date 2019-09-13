@@ -39,23 +39,17 @@ export const isValidXML = (message: string): boolean => {
 
 const verifySOAP = (parsed: Record<string, any>) => {
     // Check if the first level is a soap Envelope
-    const keys = Object.keys(parsed);
-
-    console.log(keys);
 
     const GENERIC_SOAP_ERROR = "Invalid SOAP Message";
 
+    const envelopeKey = getSOAPKey('Envelope', parsed);
 
-    if(keys.length !== 1) {
-        throw GENERIC_SOAP_ERROR
-    }
-
-    if(!keys[0].endsWith(':Envelope')) {
+    if(!envelopeKey) {
         throw `${GENERIC_SOAP_ERROR}: Not a valid SOAP Envelope`;
     }
 
     // Check if the Envelope content has a Body
-    const envelopeContent = parsed[keys[0]];
+    const envelopeContent = parsed[envelopeKey];
     const bodyKey = getSOAPKey('Body', envelopeContent);
 
     if(!bodyKey) {
