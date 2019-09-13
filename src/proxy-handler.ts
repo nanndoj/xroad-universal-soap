@@ -20,6 +20,7 @@ export const proxyMiddleware = (proxy: any) => (req: IXroadRequest, res: Respons
         try {
             console.log('1 - Lendo request');
             const buffer = Buffer.concat(bufferArr);
+            console.log('Buffer', buffer.toString());
             const message = parseXRoadMessageBody(buffer.toString());
             console.log('2 - message:', message);
             req.xroadRequestBody = message;
