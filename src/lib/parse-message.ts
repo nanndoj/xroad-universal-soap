@@ -58,7 +58,7 @@ const verifySOAP = (parsed: Record<string, any>) => {
 };
 
 export const verifyXRoadMessage = (parsed: Record<string, any>) => {
-    const envelopeKey = Object.keys(parsed)[0];
+    const envelopeKey = getSOAPKey('Envelope', parsed);
     const envelope = parsed[envelopeKey];
 
     const DOC_URL = "https://github.com/nordic-institute/X-Road/blob/develop/doc/Protocols/pr-mess_x-road_message_protocol.md#annex-e-example-messages";
