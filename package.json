@@ -1,0 +1,64 @@
+{
+  "name": "xroad-universal-soap",
+  "version": "1.0.0",
+  "description": "X-Road universal adapter for SOAP services",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test",
+    "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "start": "tsc && node ./dist/index.js",
+    "start-test": "tsc && node ./dist/index-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nanndoj/xroad-universal-soap.git"
+  },
+  "keywords": [
+    "xroad",
+    "soap",
+    "adapter",
+    "universal"
+  ],
+  "author": "Fernando Santos <nanndoj@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nanndoj/xroad-universal-soap/issues"
+  },
+  "homepage": "https://github.com/nanndoj/xroad-universal-soap#readme",
+  "devDependencies": {
+    "@types/bluebird": "^3.5.27",
+    "@types/express": "^4.17.1",
+    "@types/http-proxy": "^1.17.0",
+    "@types/node": "^12.7.5",
+    "@types/validator": "^10.11.3",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
+    "prettier": "^1.18.2",
+    "ts-node-dev": "^1.0.0-pre.42",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "connect": "^3.7.0",
+    "express": "^4.17.1",
+    "fast-xml-parser": "^3.12.20",
+    "http-proxy": "^1.17.0",
+    "install": "^0.13.0",
+    "npm": "^6.11.3",
+    "soap": "^0.29.0",
+    "transformer-proxy": "^0.3.5",
+    "validator": "^11.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,json,md, ts}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
