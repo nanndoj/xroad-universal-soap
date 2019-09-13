@@ -15,4 +15,6 @@ app.use(transformerProxy(proxyResponseHandler));
 // @ts-ignore
 app.use(proxyMiddleware(proxy));
 
-app.listen(5050, () => console.log(`Proxy server listening on port 5050`))
+
+const PORT = 5991;
+app.listen(PORT, () => console.log(`Proxy server listening on port ${PORT}`))
