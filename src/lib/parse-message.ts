@@ -41,7 +41,10 @@ const verifySOAP = (parsed: Record<string, any>) => {
     // Check if the first level is a soap Envelope
     const keys = Object.keys(parsed);
 
+    console.log(keys);
+
     const GENERIC_SOAP_ERROR = "Invalid SOAP Message";
+
 
     if(keys.length !== 1) {
         throw GENERIC_SOAP_ERROR
