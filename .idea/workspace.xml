@@ -2,14 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ccb2d0e-6211-4a5a-83e5-ae10952f47e5" name="Default Changelist" comment="wryu72">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/parse-message.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/parse-url.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/proxy-handler.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/IUrl.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/IXroadRequest.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/index.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/parse-message.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/parse-message.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/parse-url.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/lib/parse-url.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/proxy-handler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/proxy-handler.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/types/IUrl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/types/IUrl.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/types/IXroadRequest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/types/IXroadRequest.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+            <state relative-caret-position="150">
+              <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -47,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/src/proxy-handler.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="585">
-              <caret line="39" column="28" lean-forward="true" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
+              <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -76,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lib/parse-message.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="973">
-              <caret line="105" column="33" lean-forward="true" selection-start-line="105" selection-start-column="33" selection-end-line="105" selection-end-column="33" />
+              <caret line="105" column="33" selection-start-line="105" selection-start-column="33" selection-end-line="105" selection-end-column="33" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -147,13 +154,13 @@
         <option value="$PROJECT_DIR$/src/index-test.ts" />
         <option value="$PROJECT_DIR$/src/lib/check-url.ts" />
         <option value="$PROJECT_DIR$/src/types/IUrl.ts" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/lib/parse-url.ts" />
         <option value="$PROJECT_DIR$/src/types/IXroadRequest.ts" />
         <option value="$PROJECT_DIR$/src/proxy-handler.ts" />
         <option value="$PROJECT_DIR$/src/lib/parse-message.ts" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/index.ts" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -187,7 +194,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1568381436398" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1568381835999" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -217,18 +224,18 @@
       <option name="presentableId" value="Default" />
       <updated>1568211736989</updated>
       <workItem from="1568211738468" duration="6442000" />
-      <workItem from="1568278036131" duration="27699000" />
+      <workItem from="1568278036131" duration="28066000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34141000" />
+    <option name="totallyTimeSpent" value="34508000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4240" y="-734" width="1200" height="1920" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49925038" visible="true" weight="0.253886" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49925038" visible="true" weight="0.253886" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -243,7 +250,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="TypeScript" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.27891892" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.27891892" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="CheckStyle" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -283,13 +290,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -333,7 +333,7 @@
     <entry file="file://$PROJECT_DIR$/src/proxy-handler.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
-          <caret line="39" column="28" lean-forward="true" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
+          <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
@@ -350,10 +350,17 @@
     <entry file="file://$PROJECT_DIR$/src/lib/parse-message.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="973">
-          <caret line="105" column="33" lean-forward="true" selection-start-line="105" selection-start-column="33" selection-end-line="105" selection-end-column="33" />
+          <caret line="105" column="33" selection-start-line="105" selection-start-column="33" selection-end-line="105" selection-end-column="33" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
         </state>
       </provider>
     </entry>

@@ -6,7 +6,9 @@
   "scripts": {
     "test": "npm run test",
     "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
-    "start": "tsc && node ./dist/index.js",
+    "start": "tsc && pm2 start ./dist/index.js",
+    "startup": "pm2 save && pm2 startup",
+    "stop": "pm2 stop 0",
     "start-test": "tsc && node ./dist/index-test.js"
   },
   "repository": {
@@ -40,12 +42,10 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
-    "connect": "^3.7.0",
     "express": "^4.17.1",
     "fast-xml-parser": "^3.12.20",
     "http-proxy": "^1.17.0",
-    "install": "^0.13.0",
-    "npm": "^6.11.3",
+    "pm2": "^3.5.1",
     "soap": "^0.29.0",
     "transformer-proxy": "^0.3.5",
     "validator": "^11.1.0"
