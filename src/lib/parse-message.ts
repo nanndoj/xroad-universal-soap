@@ -100,7 +100,6 @@ export const formatXRoadResponse = (parsedRequest: Record<string, any>, response
 
     const requestEnvelopeKey = getSOAPKey('Envelope', parsedRequest);
     const requestEnvelope = parsedRequest[requestEnvelopeKey];
-    console.log(requestEnvelope);
 
     const requestBodyKey = getSOAPKey('Body', requestEnvelope);
     requestEnvelope[requestBodyKey] = responseBody;

@@ -9,8 +9,6 @@ export const proxyMiddleware = (proxy: any) => (req: IXroadRequest, res: Respons
 
     req.url = urlObject.path;
 
-    console.log('URL Object', urlObject);
-
     let bufferArr: any[] = [];
     req.on('data', function (data: any) {
         bufferArr.push(data)
@@ -18,13 +16,9 @@ export const proxyMiddleware = (proxy: any) => (req: IXroadRequest, res: Respons
 
     req.on('end', function () {
         try {
-            console.log('1 - Lendo request');
             const buffer = Buffer.concat(bufferArr);
-            console.log('Buffer', buffer.toString());
             const message = parseXRoadMessageBody(buffer.toString());
-            console.log('2 - message:', message);
             req.xroadRequestBody = message;
-            console.log(3);
         } catch (err) {
             proxyErrorHandler(err, req, res);
         }
@@ -43,8 +37,6 @@ export const proxyMiddleware = (proxy: any) => (req: IXroadRequest, res: Respons
 
 export const proxyResponseHandler = (data: any, req: IXroadRequest) => {
     try {
-        console.log(data.toString());
-        console.log(formatXRoadResponse(req.xroadRequestBody, data.toString()));
         return formatXRoadResponse(req.xroadRequestBody, data.toString());
     } catch(err) {
         return err;
@@ -52,6 +44,5 @@ export const proxyResponseHandler = (data: any, req: IXroadRequest) => {
 };
 
 export const proxyErrorHandler = (err: Error, req: Request, res: Response) => {
-    console.log(err.toString());
     res.end(err.toString());
 };
