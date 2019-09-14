@@ -8,22 +8,24 @@ export const proxyMiddleware = (proxy: any) => (req: IXroadRequest, res: Respons
     const urlObject: IURLObject = parseRequestURL(req);
 
     req.url = urlObject.path;
+    req.isWSDL = req.url.toUpperCase().endsWith('WSDL');
 
-    let bufferArr: any[] = [];
-    req.on('data', function (data: any) {
-        bufferArr.push(data)
-    });
+    if(!req.isWSDL) {
+        let bufferArr: any[] = [];
+        req.on('data', function (data: any) {
+            bufferArr.push(data)
+        });
 
-    req.on('end', function () {
-        try {
-            const buffer = Buffer.concat(bufferArr);
-            const message = parseXRoadMessageBody(buffer.toString());
-            req.xroadRequestBody = message;
-        } catch (err) {
-            proxyErrorHandler(err, req, res);
-        }
-
-    });
+        req.on('end', function () {
+            try {
+                const buffer = Buffer.concat(bufferArr);
+                const message = parseXRoadMessageBody(buffer.toString());
+                req.xroadRequestBody = message;
+            } catch (err) {
+                proxyErrorHandler(err, req, res);
+            }
+        });
+    }
 
     try {
         proxy.web(req, res, {
@@ -37,6 +39,11 @@ export const proxyMiddleware = (proxy: any) => (req: IXroadRequest, res: Respons
 
 export const proxyResponseHandler = (data: any, req: IXroadRequest) => {
     try {
+
+        if(req.isWSDL) {
+            return data;
+        }
+
         return formatXRoadResponse(req.xroadRequestBody, data.toString());
     } catch(err) {
         return err;
