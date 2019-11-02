@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --coverage",
     "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
-    "start": "tsc && pm2 start ./dist/index.js",
+    "start": "tsc && pm2 start ./dist/index.js --env production",
     "startup": "pm2 save && pm2 startup",
     "stop": "pm2 stop 0"
   },
