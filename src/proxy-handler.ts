@@ -1,11 +1,11 @@
-import {parseRequestURL} from "./lib/parse-url";
+import {parseURL} from "./lib/parse-url";
 import {Request, Response} from "express";
 import {IURLObject} from "./types/IUrl";
 import {formatXRoadResponse, parseXRoadMessageBody} from "./lib/parse-message";
 import {IXroadRequest} from "./types/IXroadRequest";
 
 export const proxyMiddleware = (proxy: any) => (req: IXroadRequest, res: Response, next: Function) => {
-    const urlObject: IURLObject = parseRequestURL(req);
+    const urlObject: IURLObject = parseURL(req.url);
 
     req.url = urlObject.path;
     req.isWSDL = req.url.toUpperCase().endsWith('WSDL');

@@ -1,14 +1,10 @@
 import isFQDN from 'validator/lib/isFQDN';
 import isIP from 'validator/lib/isIP';
 import {IURLObject} from "../types/IUrl";
-import { Request } from "express";
-import {IncomingMessage} from "http";
 
-export const parseRequestURL = (req: IncomingMessage): IURLObject =>  {
-    const url = req.url;
-
+export const parseURL = (url: string): IURLObject => {
     if(!url || !url.length) {
-        throw "Invalid URL";
+        throw "invalid URL";
     }
 
     const separator = '/';
@@ -20,16 +16,24 @@ export const parseRequestURL = (req: IncomingMessage): IURLObject =>  {
     }
 
     // The first part of the URL must be the HOST
-    const host = urlParts[0];
+    let host: string = urlParts[0];
+    let port: number | undefined;
+
+    // check if the host contains the port
+    if(/:\d+$/.test(host)) {
+        const hostParts = host.split(":");
+        host = hostParts[0];
+        port = parseInt(hostParts[1]);
+    }
 
     if(!isFQDN(host) && !isIP(host)) {
-        throw "Parse Error: invalid host"
+        throw "invalid host"
     }
 
     return {
         protocol: 'http',
         host,
+        port,
         path: ['', ...urlParts.slice(1)].join('/')
     }
-
 };

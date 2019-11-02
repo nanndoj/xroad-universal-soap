@@ -4,12 +4,11 @@
   "description": "X-Road universal adapter for SOAP services",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test",
+    "test": "jest --coverage",
     "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
     "start": "tsc && pm2 start ./dist/index.js",
     "startup": "pm2 save && pm2 startup",
-    "stop": "pm2 stop 0",
-    "start-test": "tsc && node ./dist/index-test.js"
+    "stop": "pm2 stop 0"
   },
   "repository": {
     "type": "git",
@@ -28,14 +27,18 @@
   },
   "homepage": "https://github.com/nanndoj/xroad-universal-soap#readme",
   "devDependencies": {
+    "@babel/preset-typescript": "^7.6.0",
     "@types/bluebird": "^3.5.27",
     "@types/express": "^4.17.1",
     "@types/http-proxy": "^1.17.0",
+    "@types/jest": "^24.0.21",
     "@types/node": "^12.7.5",
     "@types/validator": "^10.11.3",
     "husky": "^3.0.5",
+    "jest": "^24.9.0",
     "lint-staged": "^9.2.5",
     "prettier": "^1.18.2",
+    "ts-jest": "^24.1.0",
     "ts-node-dev": "^1.0.0-pre.42",
     "tslint": "^5.20.0",
     "typescript": "^3.6.3"

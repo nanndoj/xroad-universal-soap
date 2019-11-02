@@ -94,10 +94,6 @@ export const formatXRoadResponse = (parsedRequest: Record<string, any>, response
     const responseBody = responseEnvelope[responseBodyKey];
 
     // REPLACE THE REQUEST BODY WITH THE RESPONSE BODY
-
-
-
-
     const requestEnvelopeKey = getSOAPKey('Envelope', parsedRequest);
     const requestEnvelope = parsedRequest[requestEnvelopeKey];
 
