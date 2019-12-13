@@ -8,4 +8,4 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 
-openssl req -config $DIR/ca.conf -new -x509 -newkey rsa:2048 -nodes -keyout $DIR/localhost.key.pem -days 365 -out $DIR/localhost.cert.pem -subj "/C=ST/O=Local/CN=localhost"
+openssl req -config $DIR/ca.conf -new -x509 -newkey rsa:2048 -nodes -keyout $DIR/localhost.key -days 365 -out $DIR/localhost.crt -subj "/C=ST/O=Local/CN=localhost"

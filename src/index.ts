@@ -26,8 +26,8 @@ httpServer.listen(HTTP_PORT, () => console.log(`Proxy server listening on http p
 
 // Create the https server
 const HTTPS_PORT = process.env.HTTPS_PORT || 5443;
-const KEY = process.env.KEY || path.join(__dirname, 'sslcert/localhost.key.pem');
-const CERT = process.env.CERT || path.join(__dirname, 'sslcert/localhost.cert.pem');
+const KEY = process.env.KEY || path.join(__dirname, 'sslcert/localhost.key');
+const CERT = process.env.CERT || path.join(__dirname, 'sslcert/localhost.crt');
 
 const privateKey  = fs.readFileSync(KEY, 'utf8');
 const certificate = fs.readFileSync(CERT, 'utf8');
