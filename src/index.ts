@@ -20,7 +20,7 @@ app.use(transformerProxy(proxyResponseHandler));
 app.use(proxyMiddleware(proxy));
 
 // Create the http server
-const HTTP_PORT = process.env.PORT || 5080;
+const HTTP_PORT = process.env.HTTP_PORT || 5080;
 const httpServer = http.createServer(app);
 httpServer.listen(HTTP_PORT, () => console.log(`Proxy server listening on http port ${HTTP_PORT}`));
 
