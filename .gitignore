@@ -1,4 +1,6 @@
 node_modules
+src/sslcert/localhost.key.pem
+src/sslcert/localhost.cert.pem
 coverage
 dist
 .idea
