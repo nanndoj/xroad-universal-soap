@@ -1,7 +1,7 @@
 import parser from "fast-xml-parser";
 import { j2xParser } from "fast-xml-parser";
 import {ErrorMessages} from "../types/ErrorMessages";
-import {XRoadRequiredFields} from "./constants";
+import {IgnoredEnvelopeAttributeValues, XRoadRequiredFields} from "./constants";
 
 const GENERIC_XROAD_ERROR = "Invalid X-Road Message";
 
@@ -91,7 +91,7 @@ export const formatXRoadResponse = (parsedRequest: Record<string, any>, response
     const responseEnvelope = parsedResponse[responseEnvelopeKey];
 
     const responseBodyKey = getSOAPKey('Body', responseEnvelope);
-    const responseBody = responseEnvelope[responseBodyKey];
+    const responseBody = copyHeaders(responseEnvelope, responseEnvelope[responseBodyKey]);
 
     // REPLACE THE REQUEST BODY WITH THE RESPONSE BODY
     const requestEnvelopeKey = getSOAPKey('Envelope', parsedRequest);
@@ -105,6 +105,12 @@ export const formatXRoadResponse = (parsedRequest: Record<string, any>, response
     var xml = parser.parse(parsedRequest);
     return xml;
 
+};
+
+export const copyHeaders = (envelope: Record<string, any>, body: Record<string, any>): Record<string, any> => {
+    const attributes = Object.keys(envelope).filter(k => k.startsWith('@_') && IgnoredEnvelopeAttributeValues.indexOf(envelope[k]) === -1);
+    attributes.forEach(attr => body[attr] = envelope[attr]);
+    return body;
 };
 
 export const getSOAPKey = (suffix: string, part: Record<string, any>): string => {

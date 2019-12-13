@@ -151,7 +151,7 @@ describe('Parse the message', () => {
             const envelope = parsedResponse[getSOAPKey('Envelope', parsedResponse)];
             const body = envelope[getSOAPKey("Body", envelope)];
 
-            expect(body['xmlns:x']).toBeFalsy();
+            expect(body['@_xmlns:x']).toBeFalsy();
         });
     });
 });
