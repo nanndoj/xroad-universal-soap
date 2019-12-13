@@ -5,6 +5,7 @@ import {formatXRoadResponse, parseXRoadMessageBody} from "./lib/parse-message";
 import {IXroadRequest} from "./types/IXroadRequest";
 
 export const proxyMiddleware = (proxy: any) => (req: IXroadRequest, res: Response, next: Function) => {
+    const protocol = req.protocol;
     const urlObject: IURLObject = parseURL(req.url);
 
     req.url = urlObject.path;
@@ -29,7 +30,7 @@ export const proxyMiddleware = (proxy: any) => (req: IXroadRequest, res: Respons
 
     try {
         proxy.web(req, res, {
-            target: `${urlObject.protocol}://${urlObject.host}`,
+            target: `${protocol}://${urlObject.host}`,
             changeOrigin: true
         }, (err: Error) => proxyErrorHandler(err, req, res));
     } catch(err) {

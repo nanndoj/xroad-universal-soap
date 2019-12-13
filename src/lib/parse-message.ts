@@ -1,5 +1,7 @@
 import parser from "fast-xml-parser";
 import { j2xParser } from "fast-xml-parser";
+import {ErrorMessages} from "../types/ErrorMessages";
+import {XRoadRequiredFields} from "./constants";
 
 const GENERIC_XROAD_ERROR = "Invalid X-Road Message";
 
@@ -21,7 +23,7 @@ export const parseXRoadMessageBody = (messageBody: string): Record<string, any> 
 
 export const parseMessageBody = (messageBody: string): Record<string, any> => {
     if(!isValidXML(messageBody)) {
-        throw "The message is not a valid XML"
+        throw ErrorMessages.INVALID_XML
     }
 
     const parsed: Record<string, any> = parser.parse(messageBody, parserOptions);
@@ -40,12 +42,12 @@ export const isValidXML = (message: string): boolean => {
 const verifySOAP = (parsed: Record<string, any>) => {
     // Check if the first level is a soap Envelope
 
-    const GENERIC_SOAP_ERROR = "Invalid SOAP Message";
+    const GENERIC_SOAP_ERROR = ErrorMessages.GENERIC_SOAP_ERROR;
 
     const envelopeKey = getSOAPKey('Envelope', parsed);
 
     if(!envelopeKey) {
-        throw `${GENERIC_SOAP_ERROR}: Not a valid SOAP Envelope`;
+        throw `${GENERIC_SOAP_ERROR}: ${ErrorMessages.INVALID_SOAP}`;
     }
 
     // Check if the Envelope content has a Body
@@ -53,7 +55,7 @@ const verifySOAP = (parsed: Record<string, any>) => {
     const bodyKey = getSOAPKey('Body', envelopeContent);
 
     if(!bodyKey) {
-        throw `${GENERIC_SOAP_ERROR}: The message doesn't contain a Body element`;
+        throw `${GENERIC_SOAP_ERROR}: ${ErrorMessages.SOAP_BODY_MISSING}`;
     }
 };
 
@@ -73,9 +75,7 @@ export const verifyXRoadMessage = (parsed: Record<string, any>) => {
     const header = envelope[headerKey];
 
     // Check for the required header fields
-    const requiredFields = ['client', 'service', 'protocolVersion', 'id'];
-
-    requiredFields.forEach(field => {
+    XRoadRequiredFields.forEach(field => {
         if(!getSOAPKey(field, header)) {
                 throw `${GENERIC_XROAD_ERROR}: Make sure the envelope header contains the field '${field}' as especified in ${DOC_URL}`;
         }
