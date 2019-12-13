@@ -1,2 +1,11 @@
 #!/usr/bin/env bash
-openssl req -config ca.conf -new -x509 -newkey rsa:2048 -nodes -keyout localhost.key.pem -days 365 -out localhost.cert.pem -subj "/C=ST/O=Local/CN=localhost"
+
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+
+openssl req -config $DIR/ca.conf -new -x509 -newkey rsa:2048 -nodes -keyout $DIR/localhost.key.pem -days 365 -out $DIR/localhost.cert.pem -subj "/C=ST/O=Local/CN=localhost"
