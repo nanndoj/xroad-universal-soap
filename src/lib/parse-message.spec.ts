@@ -221,7 +221,7 @@ describe("Parse the message", () => {
 
       const reqEnvelope =
         parsedResponse[getSOAPKey("Envelope", parsedResponse)];
-      const reqHeader = envelope[getSOAPKey("Header", envelope)];
+      const reqHeader = reqEnvelope[getSOAPKey("Header", envelope)];
       const reqService = reqHeader[getSOAPKey("service", reqHeader)];
       const serviceCode = reqService[getSOAPKey("serviceCode", reqService)];
 
