@@ -219,12 +219,19 @@ describe("Parse the message", () => {
       const envelope = parsedResponse[getSOAPKey("Envelope", parsedResponse)];
       const body = envelope[getSOAPKey("Body", envelope)];
 
+      const reqEnvelope =
+        parsedResponse[getSOAPKey("Envelope", parsedResponse)];
+      const reqHeader = envelope[getSOAPKey("Header", envelope)];
+      const reqService = reqHeader[getSOAPKey("service", reqHeader)];
+      const serviceCode = reqService[getSOAPKey("serviceCode", reqService)];
+
       // Filter the attributes
       const children = Object.keys(body).filter(
         (k: string) => !k.startsWith("@_") && k !== "#text"
       );
 
       expect(children.length).toEqual(1);
+      expect(Object.keys(body)[0]).toContain(`${serviceCode}Response`);
     });
   });
 });

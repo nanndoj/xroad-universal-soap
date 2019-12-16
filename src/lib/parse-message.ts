@@ -102,21 +102,26 @@ export const formatXRoadResponse = (
     responseEnvelope[responseBodyKey]
   );
 
-  // Check if the body element has more than one child
-  const children = Object.keys(responseBody).filter(
-    (k: string) => !k.startsWith("@_") && k !== "#text"
-  );
-
-  if (children.length > 1) {
-    // Create a wrapper
-    responseBody = { response: responseBody };
-  }
-
   // REPLACE THE REQUEST BODY WITH THE RESPONSE BODY
   const requestEnvelopeKey = getSOAPKey("Envelope", parsedRequest);
   const requestEnvelope = parsedRequest[requestEnvelopeKey];
 
   const requestBodyKey = getSOAPKey("Body", requestEnvelope);
+
+  // FIX PROBLEMS WHEN THE RESPONSE BODY HAS MORE THAN ONE ELEMENT
+  const children = Object.keys(responseBody).filter(
+    (k: string) => !k.startsWith("@_") && k !== "#text"
+  );
+
+  if (children.length > 1) {
+    const reqHeader = requestEnvelope[getSOAPKey("Header", requestEnvelope)];
+    const reqService = reqHeader[getSOAPKey("service", reqHeader)];
+    const serviceCode = reqService[getSOAPKey("serviceCode", reqService)];
+
+    // Create a wrapper
+    responseBody = { [`${serviceCode}Response`]: responseBody };
+  }
+
   requestEnvelope[requestBodyKey] = responseBody;
 
   var parser = new j2xParser(parserOptions);
