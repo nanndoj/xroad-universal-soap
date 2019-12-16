@@ -1,6 +1,6 @@
 node_modules
-src/sslcert/localhost.key
-src/sslcert/localhost.crt
+src/sslcert/*.key
+src/sslcert/*.crt
 coverage
 dist
 .idea
