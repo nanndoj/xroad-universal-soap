@@ -97,10 +97,20 @@ export const formatXRoadResponse = (
   const responseEnvelope = parsedResponse[responseEnvelopeKey];
 
   const responseBodyKey = getSOAPKey("Body", responseEnvelope);
-  const responseBody = copyHeaders(
+  let responseBody = copyHeaders(
     responseEnvelope,
     responseEnvelope[responseBodyKey]
   );
+
+  // Check if the body element has more than one child
+  const children = Object.keys(responseBody).filter(
+    (k: string) => !k.startsWith("@_") && k !== "#text"
+  );
+
+  if (children.length > 1) {
+    // Create a wrapper
+    responseBody = { response: responseBody };
+  }
 
   // REPLACE THE REQUEST BODY WITH THE RESPONSE BODY
   const requestEnvelopeKey = getSOAPKey("Envelope", parsedRequest);
