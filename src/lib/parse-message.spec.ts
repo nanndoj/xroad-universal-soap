@@ -181,7 +181,7 @@ describe("Parse the message", () => {
       const response = formatXRoadResponse(
         parsedRequest,
         `
-                <soapenv:Envelope xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
+                <soapenv:Envelope xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
                    <soapenv:Body>
                        <ScaWsConsutarGtaResponse soapenv:encodingStyle="https://schemas.xmlsoap.org/soap/encoding/">
                            <ScaWsConsutarGtaReturn href="#id0"/>

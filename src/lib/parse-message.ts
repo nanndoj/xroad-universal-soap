@@ -1,10 +1,7 @@
 import parser from "fast-xml-parser";
 import { j2xParser } from "fast-xml-parser";
 import { ErrorMessages } from "../types/ErrorMessages";
-import {
-  IgnoredEnvelopeAttributeValues,
-  XRoadRequiredFields
-} from "./constants";
+import { XRoadRequiredFields } from "./constants";
 
 const GENERIC_XROAD_ERROR = "Invalid X-Road Message";
 
