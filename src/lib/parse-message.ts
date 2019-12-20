@@ -133,11 +133,7 @@ export const copyHeaders = (
   envelope: Record<string, any>,
   body: Record<string, any>
 ): Record<string, any> => {
-  const attributes = Object.keys(envelope).filter(
-    k =>
-      k.startsWith("@_") &&
-      IgnoredEnvelopeAttributeValues.indexOf(envelope[k]) === -1
-  );
+  const attributes = Object.keys(envelope).filter(k => k.startsWith("@_"));
   attributes.forEach(attr => (body[attr] = envelope[attr]));
   return body;
 };

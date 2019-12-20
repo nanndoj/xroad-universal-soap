@@ -153,7 +153,7 @@ describe("Parse the message", () => {
       );
     });
 
-    test("Should not move the envelope namespace definition to the body", () => {
+    test("Should move the envelope namespace definition to the body", () => {
       const response = formatXRoadResponse(
         parsedRequest,
         `
@@ -172,7 +172,9 @@ describe("Parse the message", () => {
       const envelope = parsedResponse[getSOAPKey("Envelope", parsedResponse)];
       const body = envelope[getSOAPKey("Body", envelope)];
 
-      expect(body["@_xmlns:x"]).toBeFalsy();
+      expect(body["@_xmlns:x"]).toEqual(
+        "http://schemas.xmlsoap.org/soap/envelope/"
+      );
     });
 
     test("The body message should have only one element", () => {
