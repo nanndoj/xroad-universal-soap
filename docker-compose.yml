@@ -1,0 +1,17 @@
+version: '2'
+services:
+  xroad-soap-proxy:
+    build: ./
+    container_name: "xroad-soap-proxy"
+    ports:
+      - "5080:5080"
+      - "5443:5443"
+    volumes:
+      - sslcert:./src/sslcert
+    environment:
+      KEY: /sslcert/local.key
+      CERT: /sslcert/local.crt
+    restart: always
+
+volumes:
+  sslcert:
