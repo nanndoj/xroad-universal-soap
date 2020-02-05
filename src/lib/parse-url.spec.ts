@@ -1,4 +1,5 @@
 import { parseURL } from "./parse-url";
+import { encode } from "base-64";
 
 const TEST_HOST = "wbs2.homol.detr.gov";
 const TEST_URL = `${TEST_HOST}/wsServico/wsServicos.asmx?wsdl`;
@@ -41,8 +42,17 @@ describe("Parse the request url", () => {
     });
   });
 
-  test("Sould validate urls containing basic authentication", () => {
-    const host = "fernando:test@192.168.1.5";
-    expect(parseURL(`/${host}/test/ip/host`).host).toEqual(host);
+  test("Should validate urls containing basic authentication", () => {
+    const host = "192.168.1.5";
+    const completeHost = `fernando:test@${host}`;
+    expect(parseURL(`/${completeHost}/test/ip/host`).host).toEqual(host);
+  });
+
+  test("Should load the basic authentication as header", () => {
+    const host = "192.168.1.5";
+    const auth = "fernando:test";
+    const completeHost = `${auth}@${host}`;
+    const urlObject = parseURL(`/${completeHost}/test/ip/host`);
+    expect(urlObject.authorizationHeader).toEqual(`Basic ${encode(auth)}`);
   });
 });

@@ -1,6 +1,7 @@
 import isFQDN from "validator/lib/isFQDN";
 import isIP from "validator/lib/isIP";
 import { IURLObject } from "../types/IUrl";
+import { encode } from "base-64";
 
 export const parseURL = (url: string): IURLObject => {
   if (!url || !url.length) {
@@ -18,6 +19,7 @@ export const parseURL = (url: string): IURLObject => {
   // The first part of the URL must be the HOST
   let host: string = urlParts[0];
   let port: number | undefined;
+  let authorizationHeader: string | undefined;
 
   const portRegex = /:(\d+)$/;
 
@@ -32,21 +34,31 @@ export const parseURL = (url: string): IURLObject => {
     throw "invalid host";
   }
 
+  if (isBasicAuth(host)) {
+    authorizationHeader = `Basic ${encode(host.substr(0, host.indexOf("@")))}`;
+    host = host.split("@")[1];
+  }
+
   return {
     protocol: "http",
     host,
+    authorizationHeader,
     port,
     path: ["", ...urlParts.slice(1)].join("/")
   };
 };
 
 export const isValidHost = (hostInput: string) => {
-  const basicAuthRegex = /[^:]+:[^@]+@.+/;
   let host = hostInput;
 
-  if (basicAuthRegex.test(hostInput)) {
+  if (isBasicAuth(hostInput)) {
     host = hostInput.split("@")[1];
   }
 
   return isFQDN(host) || isIP(host);
+};
+
+export const isBasicAuth = (hostInput: string) => {
+  const basicAuthRegex = /[^:]+:[^@]+@.+/;
+  return basicAuthRegex.test(hostInput);
 };
