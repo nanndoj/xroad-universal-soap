@@ -6,6 +6,9 @@ services:
     ports:
       - "5080:5080"
       - "5443:5443"
+    environment:
+      KEY: "${KEY}"
+      CERT: "${CERT}"
     restart: always
 
 volumes:
