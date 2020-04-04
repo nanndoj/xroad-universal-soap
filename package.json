@@ -8,7 +8,8 @@
     "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
     "build": "tsc && npm run copy-certificates",
     "generate-certificates": "./src/sslcert/generate-certificate.sh",
-    "copy-certificates": "npx copyfiles -f ./src/sslcert/local.crt ./src/sslcert/local.key ./dist/sslcert",
+    "copy-certificates": "copyfiles -f ./src/sslcert/local.crt ./src/sslcert/local.key ./dist/sslcert",
+    "start": "pm2 start pm2.json",
     "startup": "pm2 save && pm2 startup",
     "stop": "pm2 stop 0"
   },
@@ -51,6 +52,7 @@
     "base-64": "^0.1.0",
     "body-parser": "^1.19.0",
     "chalk": "^3.0.0",
+    "copyfiles": "^2.2.0",
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "fast-xml-parser": "^3.12.20",
