@@ -1,5 +1,5 @@
 {
-  "name": "xvia-proxy",
+  "name": "xroad-soap-proxy",
   "script": "dist/index.js",
   "instances": "2",
   "env": {
