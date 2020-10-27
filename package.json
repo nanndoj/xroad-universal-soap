@@ -57,7 +57,7 @@
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "fast-xml-parser": "^3.12.20",
-    "http-proxy": "^1.17.0",
+    "http-proxy": "^1.18.1",
     "is-gzip": "^2.0.0",
     "pm2": "^3.5.1",
     "soap": "^0.29.0",
