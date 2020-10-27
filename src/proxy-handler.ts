@@ -8,6 +8,9 @@ import {
 import { IXroadRequest } from "./types/IXroadRequest";
 import chalk from "chalk";
 
+import isGzip from "is-gzip";
+import zlib from "zlib";
+
 import _debug from "debug";
 import { IncomingMessage } from "http";
 const debug = _debug("soap-proxy");
@@ -76,15 +79,22 @@ export const proxyMiddleware = (proxy: any) => (
 };
 
 export const proxyResponseHandler = (data: any, req: IXroadRequest) => {
-  try {
-    if (req.isWSDL) {
-      return data;
+  return new Promise((resolve, reject) => {
+    try {
+      if (req.isWSDL) {
+        resolve(data);
+      }
+      if (isGzip(data)) {
+        zlib.gunzip(data, (err, data) => {
+          resolve(formatXRoadResponse(req.xroadRequestBody, data.toString()));
+        });
+      } else {
+        resolve(formatXRoadResponse(req.xroadRequestBody, data.toString()));
+      }
+    } catch (err) {
+      reject(err);
     }
-
-    return formatXRoadResponse(req.xroadRequestBody, data.toString());
-  } catch (err) {
-    return err;
-  }
+  });
 };
 
 export const proxyErrorHandler = (err: Error, req: Request, res: Response) => {
