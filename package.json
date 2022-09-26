@@ -59,7 +59,7 @@
     "fast-xml-parser": "^3.12.20",
     "http-proxy": "^1.18.1",
     "is-gzip": "^2.0.0",
-    "pm2": "^3.5.1",
+    "pm2": "^5.2.0",
     "soap": "^0.35.0",
     "transformer-proxy": "^0.3.5",
     "validator": "^11.1.0"
