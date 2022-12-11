@@ -55,7 +55,7 @@
     "chalk": "^3.0.0",
     "copyfiles": "^2.2.0",
     "debug": "^4.1.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "fast-xml-parser": "^3.12.20",
     "http-proxy": "^1.18.1",
     "is-gzip": "^2.0.0",
